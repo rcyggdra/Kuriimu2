@@ -22,3 +22,9 @@ jobs:
         dotnet build ./src/Kontract/Kontract.csproj 
         dotnet build ./src/Kore/Kore.csproj 
         dotnet build ./src/Kryptography/Kryptography.csproj 
+    - name: Publish buget packages
+      run: |
+        for f in ./nuget/*.nupkg
+        do
+          curl -vX PUT -u "LITTOMA:${{ secrets.PAT }}" -F package=@$f https://nuget.pkg.github.com/LITTOMA/
+        done
