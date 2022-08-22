@@ -1,0 +1,26 @@
+name: .NET
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: |
+        dotnet build ./src/Kanvas/Kanvas.csproj 
+        dotnet build ./src/Komponent/Komponent.csproj 
+        dotnet build ./src/Kompression/Kompression.csproj 
+        dotnet build ./src/Kontract/Kontract.csproj 
+        dotnet build ./src/Kore/Kore.csproj 
+        dotnet build ./src/Kryptography/Kryptography.csproj 
