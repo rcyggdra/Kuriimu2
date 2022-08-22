@@ -22,7 +22,7 @@ jobs:
         dotnet build ./src/Kontract/Kontract.csproj 
         dotnet build ./src/Kore/Kore.csproj 
         dotnet build ./src/Kryptography/Kryptography.csproj 
-    - name: Publish buget packages
+    - name: Publish nuget packages
       run: |
         for f in ./nuget/*.nupkg
         do

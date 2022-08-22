@@ -16,9 +16,9 @@
     <Description>A library containing all basic and advanced cryptography and hash algorithms implemented for Kuriimu2.</Description>
     <Copyright>Copyright (c) 2019 Fan Translators International</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/FanTranslatorsInternational/Kuriimu2</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/LITTOMA/Kuriimu2</PackageProjectUrl>
     <PackageIcon>kuriimu2icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/FanTranslatorsInternational/Kuriimu2</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LITTOMA/Kuriimu2</RepositoryUrl>
     <PackageTags>Cryptography, Security, Kuriimu2</PackageTags>
   </PropertyGroup>
 
