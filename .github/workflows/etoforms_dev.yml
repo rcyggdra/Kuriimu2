@@ -134,46 +134,7 @@ jobs:
       with:
         files: ./dist/final/Mac
         dest: ./update/Mac/latest.zip
-      
-    - name: Install openSSL
-      uses: crazy-max/ghaction-chocolatey@v1
-      with:
-        args: install openssl.light
-      
-    - name: Sign release
-      run: |
-        echo "$PRIVATE_KEY" > privatekey.pem
-        openssl dgst -sha512 -sign privatekey.pem -out ./update/Wpf/latest.sig ./update/Wpf/latest.zip
-        openssl dgst -sha512 -sign privatekey.pem -out ./update/Gtk/latest.sig ./update/Gtk/latest.zip
-        openssl dgst -sha512 -sign privatekey.pem -out ./update/Mac/latest.sig ./update/Mac/latest.zip
-      shell: bash
-      env:
-        PRIVATE_KEY: ${{secrets.PRIVATE_KEY_ETOFORMS}}
-      
-    - name: Clone update repository
-      run: git clone https://github.com/FanTranslatorsInternational/Kuriimu2-EtoForms-Update ./update_repo
-        
-    - name: Move update files to update repo
-      run: |
-        mv -Force ./update/Wpf/* ./update_repo/Wpf
-        mv -Force ./update/Gtk/* ./update_repo/Gtk
-        mv -Force ./update/Mac/* ./update_repo/Mac
-        
-    - name: Commit changes to update repo
-      run: |
-        cd ./update_repo
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add *
-        git commit -m "Update binaries" -a
-        
-    - name: Push changes to update repo
-      uses: ad-m/github-push-action@master
-      with:
-        directory: ./update_repo
-        repository: FanTranslatorsInternational/Kuriimu2-EtoForms-Update
-        github_token: ${{ secrets.PRIVATE_ACCESS_TOKEN }}
-      
+
     - name: Upload Windows artifact
       uses: actions/upload-artifact@v1
       with:
